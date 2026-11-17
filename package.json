@@ -1,0 +1,52 @@
+{
+  "name": "@wasp/dsh-model-provider-info",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Shows the model's provider in the DeepSeek Harness composer model selector: the provider name above the model in the dropdown's Model row, and \"provider: model\" on the selected chip.",
+  "license": "MIT",
+  "author": "Krasimir Kazakov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkazakov/dsh-model-provider-info-plugin.git"
+  },
+  "homepage": "https://github.com/kkazakov/dsh-model-provider-info-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/kkazakov/dsh-model-provider-info-plugin/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "model",
+    "provider",
+    "composer",
+    "selector"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node test-plugin.mjs"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-model-selection"]
+    }
+  }
+}

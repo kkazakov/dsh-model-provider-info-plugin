@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Model provider info",
+    "description": "Shows the model's provider in the composer model selector. The provider name appears above the model name in the dropdown's Model row, and the selected chip reads \"provider: model\". The model list itself, the /model picker, and the reasoning-effort menu are unchanged."
+  }
+}

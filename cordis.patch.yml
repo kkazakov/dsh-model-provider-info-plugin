@@ -1,0 +1,6 @@
+# Model provider info bundle.
+# The Host half is empty: the Client half contributes a label into the shipped
+# composer model selector (`@deepseek-ai/dsh-client-ui-model-selection`).
+- insert:
+    - id: model-provider-info
+      name: '@wasp/dsh-model-provider-info'
