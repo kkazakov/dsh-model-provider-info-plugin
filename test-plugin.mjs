@@ -187,5 +187,18 @@ const icon = read('./icon.svg');
 check('icon is a 36x36 SVG', icon.includes('width="36"') && icon.includes('height="36"'));
 check('icon is self-contained', !/<script|<style|<image|foreignObject/.test(icon));
 
+// Every relative image the README shows must exist, and be packaged for npm.
+const readme = read('./README.md');
+const images = [...readme.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(match => match[1]);
+check('README shows at least one image', images.length > 0);
+for (const image of images) {
+  if (/^https?:/.test(image)) continue;
+  check(`README image ${image} exists`, existsSync(new URL(image, import.meta.url)));
+  const covered = pkg.files.some(pattern => pattern === image
+    || (pattern.endsWith('*') && image.startsWith(pattern.slice(0, pattern.indexOf('*'))))
+    || image.startsWith(`${pattern}/`));
+  check(`README image ${image} is packaged by files[]`, covered);
+}
+
 console.log(`\n${checks - failures}/${checks} checks passed`);
 process.exit(failures === 0 ? 0 : 1);

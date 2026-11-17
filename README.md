@@ -4,7 +4,7 @@ Tells you *which provider* serves the model you picked. The composer's model
 selector shows a model name such as `deepseek-v4.1-flash-1017`, which the same
 name can carry in several providers; this plugin puts the provider next to it.
 
-![Model provider info icon](icon.svg)
+![The model selector's Model row showing the provider opencode-go above the model name DeepSeek V4.1 Flash, and the composer chip reading "opencode-go: DeepSeek V4.1 Flash"](docs/preview.webp)
 
 ## What it gives you
 
